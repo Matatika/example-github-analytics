@@ -1,0 +1,4 @@
+/venv
+/.meltano
+.env
+/transform/dbt_packages
