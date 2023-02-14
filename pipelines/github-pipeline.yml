@@ -1,0 +1,15 @@
+version: pipelines/v0.1
+name: github-pipeline
+timeout: 0
+script: |-
+  meltano install
+
+  meltano run tap-github target-postgres dbt:deps dbt:snapshot dbt:run
+data_components:
+- tap-github
+- Warehouse
+- dbt
+actions:
+- dbt:deps
+- dbt:snapshot
+- dbt:run

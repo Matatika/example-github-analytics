@@ -1,0 +1,12 @@
+{
+  "plugin_type": "transforms",
+  "name": "dbt-tap-github",
+  "namespace": "tap_github",
+  "variant": "matatika",
+  "label": "dbt Tap Github",
+  "pip_url": "https://github.com/Matatika/dbt-tap-github",
+  "logo_url": "https://app-staging.matatika.comnull",
+  "vars": {
+    "schema": "{{ env_var('DBT_SOURCE_SCHEMA') }}"
+  }
+}
