@@ -26,6 +26,3 @@ plugins:
   - name: analyze-github
     variant: matatika
     pip_url: git+https://github.com/Matatika/analyze-github
-  utilities:
-  - name: postgres
-    variant: postgres
