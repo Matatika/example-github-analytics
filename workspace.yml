@@ -1,7 +1,5 @@
 version: workspaces/v0.1
-name: project
-app_properties:
-  WELCOME_DATASET_ALIAS: welcome
+name: Github Project
 dataset_paths:
 - analyze/datasets
 - .meltano/analyze/datasets
