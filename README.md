@@ -19,3 +19,9 @@ This example Meltano project is a quick and easy way to get started with insight
 11. Once finished, click the Play Button on your pipeline to run it
 
 After the pipeline run has completed go to the app (On the menu click `Switch To App`) and see the datasets.
+
+### Getting the Github Classic Personal Access Token
+
+[Creating a Classic Personal Access Token Docs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic)
+
+When making my Classic Personal Access Token, the only Scope I selected was `public_repo` then just pointed to one of our public repos: ["Matatika/matatika-docs"]
