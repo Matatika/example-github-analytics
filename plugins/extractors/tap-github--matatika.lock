@@ -2,7 +2,7 @@
   "plugin_type": "extractors",
   "name": "tap-github",
   "namespace": "tap_github",
-  "variant": "meltanolabs",
+  "variant": "matatika",
   "label": "GitHub",
   "docs": "https://hub.meltano.com/extractors/tap-github--meltanolabs",
   "repo": "https://github.com/MeltanoLabs/tap-github",
@@ -27,13 +27,15 @@
       "name": "auth_token",
       "kind": "password",
       "label": "Personal Access Token",
-      "description": "GitHub token to authenticate with."
+      "description": "GitHub token to authenticate with.",
+      "required": "true"
     },
     {
       "name": "repositories",
       "kind": "array",
       "label": "Repositories",
-      "description": "An array of strings containing the github repos to be included"
+      "description": "An array of strings containing the github repos to be included",
+      "required": "true"
     }
   ]
 }

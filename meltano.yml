@@ -8,7 +8,7 @@ environments:
 plugins:
   extractors:
   - name: tap-github
-    variant: meltanolabs
+    variant: matatika
     pip_url: git+https://github.com/MeltanoLabs/tap-github.git
   loaders:
   - name: target-postgres
