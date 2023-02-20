@@ -36,7 +36,7 @@
       "label": "Repositories",
       "description": "An array of strings containing the github repos to be included",
       "required": "true",
-      "value": ["\"Meltano/meltano\""]
+      "value": ["Meltano/meltano"]
     }
   ]
 }
