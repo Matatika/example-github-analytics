@@ -2,8 +2,7 @@ version: '3.7'
 
 services:
   catalog:
-    user: $userID:$groupID
-    image: matatika/catalog:10863
+    image: matatika/catalog:latest-dev
     ports:
       - '8080:8080'
     deploy:
@@ -23,7 +22,7 @@ services:
       - PERSISTENCE_CATALOG_PASS=warehouse
       - PERSISTENCE_CATALOG_DRIVER_CLASS_NAME=org.postgresql.Driver
       - ELASTICSEARCH_HOST=search
-      - MATATIKA_WORKSPACES_HOME=/project
+      - MATATIKA_WORKSPACE_DIRS=/project
       # Generate a 256-bit (32-char) secret key and set it here. This is used to generate access tokens for the Matatika App and API.
       - MATATIKA_AUTH_LOCAL_SECRET=matatikaauthlocalsecret_changeme
     depends_on: {"search-setup": {"condition": "service_completed_successfully"}, "search": {"condition": "service_healthy"}, "db": {"condition": "service_healthy"}}
@@ -37,7 +36,7 @@ services:
 
   app:
     user: root
-    image: matatika/app:10863
+    image: matatika/app:latest-dev
     ports:
       - '3080:80'
       - '3443:443'
