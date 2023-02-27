@@ -1,0 +1,41 @@
+# This file is managed by the 'analyze-github' file bundle and updated automatically when `meltano upgrade` is run.
+# To prevent any manual changes from being overwritten, remove the file bundle from `meltano.yml` or disable automatic updates:
+#     meltano config --plugin-type=files analyze-github set _update analyze/datasets/tap-github/github-table-prs-created-last-30-days.yml false
+
+version: datasets/v0.2
+source: tap-github
+title: PRs Created Last 30 Days
+questions: What are the pull requests created in the last 30 days?
+description: |-
+  PRs created in the last 30 days.
+
+  #github
+  #pr-dashboard
+metadata: |-
+  {
+    "name": "prs",
+    "related_table": {
+      "columns": [
+        {"name": "created_at", "label": "Created At", "description": "Created At"}, 
+        {"name": "title", "label": "Title", "description": "Title"},
+        {"name": "user_login", "label": "Created By", "description": "Created By"},
+        {"name": "repo", "label": "Repo", "description": "Repo"},
+        {"name": "state", "label": "Status", "description": "Status"},
+        {"name": "url", "label": "URL", "description": "URL"},
+        {"name": "assignees", "label": "Assignees", "description": "Assignees"}
+      ]
+    }
+  }
+visualisation: '{"google-chart": {"chartType": "Table"}}'
+query: |-
+  SELECT
+    created_at "prs.created_at"
+    , title "prs.title"
+    , user__login "prs.user_login"
+    , repo "prs.repo"
+    , state "prs.state"
+    , html_url "prs.url"
+    , assignees "prs.assignees"
+  FROM issues as prs
+  WHERE created_at::date >= current_date - INTERVAL '30 day'
+  AND "type" = 'pull_request'

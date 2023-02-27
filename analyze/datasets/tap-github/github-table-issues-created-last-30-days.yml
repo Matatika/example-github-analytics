@@ -1,0 +1,41 @@
+# This file is managed by the 'analyze-github' file bundle and updated automatically when `meltano upgrade` is run.
+# To prevent any manual changes from being overwritten, remove the file bundle from `meltano.yml` or disable automatic updates:
+#     meltano config --plugin-type=files analyze-github set _update analyze/datasets/tap-github/github-table-issues-created-last-30-days.yml false
+
+version: datasets/v0.2
+source: tap-github
+title: Issues Created Last 30 Days
+questions: What are the issues created in the last 30 days?
+description: |-
+  Issues created in the last 30 days.
+
+  #github
+  #issue-dashboard
+metadata: |-
+  {
+    "name": "issues",
+    "related_table": {
+      "columns": [
+        {"name": "created_at", "label": "Created At", "description": "Created At"}, 
+        {"name": "title", "label": "Title", "description": "Title"},
+        {"name": "user_login", "label": "Created By", "description": "Created By"},
+        {"name": "repo", "label": "Repo", "description": "Repo"},
+        {"name": "state", "label": "Status", "description": "Status"},
+        {"name": "url", "label": "URL", "description": "URL"},
+        {"name": "assignees", "label": "Assignees", "description": "Assignees"}
+      ]
+    }
+  }
+visualisation: '{"google-chart": {"chartType": "Table"}}'
+query: |-
+  SELECT
+    created_at "issues.created_at"
+    , title "issues.title"
+    , user__login "issues.user_login"
+    , repo "issues.repo"
+    , state "issues.state"
+    , html_url "issues.url"
+    , assignees "issues.assignees"
+  FROM issues
+  WHERE created_at::date >= current_date - INTERVAL '30 day'
+  AND "type" = 'issue'

@@ -1,0 +1,51 @@
+# This file is managed by the 'analyze-github' file bundle and updated automatically when `meltano upgrade` is run.
+# To prevent any manual changes from being overwritten, remove the file bundle from `meltano.yml` or disable automatic updates:
+#     meltano config --plugin-type=files analyze-github set _update analyze/datasets/tap-github/github-issues-created-and-closed-last-30-days.yml false
+
+version: datasets/v0.2
+source: tap-github
+title: Issues Created and Closed Last 30 Days
+questions: How many issues have been created and closed during the last 30 days?
+description: |-
+  Issues created and closed for the last 30 days.
+
+  #github
+  #issues
+metadata: |-
+  {
+    "name": "fds",
+    "related_table": {
+      "columns": [
+        {"name": "date", "label": "Date", "description": "Date"}
+      ], 
+      "aggregates": [
+        {"name": "created_issues", "label": "Created Issues", "description": "Created Issues"}, 
+        {"name": "closed_issues", "label": "Closed Issues", "description": "Closed Issues"}
+      ]
+    }
+  }
+visualisation: |-
+  {
+    "chartjs-chart": {
+      "chartType": "line", 
+      "options": {
+        "scales": {
+          "y": {
+            "beginAtZero": true,
+            "ticks": {
+              "stepSize": 1
+            }
+          }
+        }
+      }
+    }
+  }
+query: |-
+  SELECT
+  	date_day "fds.date"
+  	, COALESCE(created_issues, 0) "fds.created_issues"
+  	, COALESCE(closed_issues, 0) "fds.closed_issues"
+  FROM github_fact_daily_stats fds
+  WHERE date_day > current_date - INTERVAL '30 day'
+  AND date_day <= current_date
+  ORDER BY date_day::date ASC

@@ -1,0 +1,36 @@
+# This file is managed by the 'analyze-github' file bundle and updated automatically when `meltano upgrade` is run.
+# To prevent any manual changes from being overwritten, remove the file bundle from `meltano.yml` or disable automatic updates:
+#     meltano config --plugin-type=files analyze-github set _update analyze/datasets/tap-github/github-treemap-prs-created-last-7-days.yml false
+
+version: datasets/v0.2
+source: tap-github
+title: PRs Created Last 7 Days
+questions: What are the total number of PRs created in the last 7 days?
+description: |-
+  Total number of PRs created in the last 7 days.
+
+  #github
+  #pr-dashboard
+metadata: |-
+  {
+    "name": "github_fact_daily_stats",
+    "related_table": {
+        "columns": [
+        ], 
+        "aggregates": [
+          {"name": "prs", "label": "Pull Requests", "description": "Pull Requests"}
+        ]
+    }
+  }
+visualisation: |-
+  {
+    "chartjs-chart": {
+        "chartType": "treemap"
+    }
+  }
+query: |-
+  SELECT
+    COALESCE(sum(created_prs), 0) "github_fact_daily_stats.prs"
+  FROM github_fact_daily_stats
+  WHERE date_day <= current_date
+  AND date_day >= current_date - INTERVAL '6 day'

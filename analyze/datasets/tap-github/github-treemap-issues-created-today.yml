@@ -1,0 +1,35 @@
+# This file is managed by the 'analyze-github' file bundle and updated automatically when `meltano upgrade` is run.
+# To prevent any manual changes from being overwritten, remove the file bundle from `meltano.yml` or disable automatic updates:
+#     meltano config --plugin-type=files analyze-github set _update analyze/datasets/tap-github/github-treemap-issues-created-today.yml false
+
+version: datasets/v0.2
+source: tap-github
+title: Issues Created Today
+questions: What are the total number of issues created today?
+description: |-
+  Total number of issues created today.
+
+  #github
+  #issue-dashboard
+metadata: |-
+  {
+    "name": "github_fact_daily_stats",
+    "related_table": {
+        "columns": [
+        ], 
+        "aggregates": [
+          {"name": "issues", "label": "Issues", "description": "Issues"}
+        ]
+    }
+  }
+visualisation: |-
+  {
+    "chartjs-chart": {
+        "chartType": "treemap"
+    }
+  }
+query: |-
+  SELECT
+    COALESCE(sum(created_issues), 0) "github_fact_daily_stats.issues"
+  FROM github_fact_daily_stats
+  WHERE date_day = current_date

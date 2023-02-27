@@ -1,0 +1,51 @@
+# This file is managed by the 'analyze-github' file bundle and updated automatically when `meltano upgrade` is run.
+# To prevent any manual changes from being overwritten, remove the file bundle from `meltano.yml` or disable automatic updates:
+#     meltano config --plugin-type=files analyze-github set _update analyze/datasets/tap-github/github-prs-created-and-closed-last-30-days.yml false
+
+version: datasets/v0.2
+source: tap-github
+title: PRs Created and Closed Last 30 Days
+questions: How many pull requests have been created and closed during the last 30 days?
+description: |-
+  PRs created and closed for the last 30 days.
+
+  #github
+  #prs
+metadata: |-
+  {
+    "name": "fds",
+    "related_table": {
+      "columns": [
+        {"name": "date", "label": "Date", "description": "Date"}
+      ], 
+      "aggregates": [
+        {"name": "created_prs", "label": "Created PRs", "description": "Created PRs"}, 
+        {"name": "closed_prs", "label": "Closed PRs", "description": "Closed PRs"}
+      ]
+    }
+  }
+visualisation: |-
+  {
+    "chartjs-chart": {
+      "chartType": "line", 
+      "options": {
+        "scales": {
+          "y": {
+            "beginAtZero": true,
+            "ticks": {
+              "stepSize": 1
+            }
+          }
+        }
+      }
+    }
+  }
+query: |-
+  SELECT
+  	date_day "fds.date"
+  	, COALESCE(created_prs, 0) "fds.created_prs"
+  	, COALESCE(closed_prs, 0) "fds.closed_prs"
+  FROM github_fact_daily_stats fds
+  WHERE date_day > current_date - INTERVAL '30 day'
+  AND date_day <= current_date
+  ORDER BY date_day::date ASC
