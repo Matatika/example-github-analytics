@@ -41,11 +41,11 @@ Using Matatika you can run this example with only docker and we create all the f
 
 5. Run the Pipeline
 
-Once the pipeline has finished running go to the datasets page, and expand out any charts or tables you want to see!
+6. Once the pipeline has finished running go to the datasets page, and expand out any charts or tables you want to see!
 
 ---
 
-### Getting Help
+### Support
 
 Join our community on the [Matatika Slack](https://join.slack.com/t/matatika/shared_invite/zt-19n1bfokx-F31DNitTpSxWCFO2aFlgxg) to get help and updates.
 
