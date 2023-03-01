@@ -35,11 +35,11 @@ Using Matatika you can run this example with only docker and we create all the f
 
 2. Open [https://localhost:3443](https://localhost:3443)
 
-3. Click the 3 dots on your `github-pipeline`, click `Edit`, expand out the `tap-github` settings
+3. You will now see the tasks screen. Click `LET'S GO` for the "Complete pipeline configuration" task
 
-4. Enter your GitHub classic personal access token, then click `Close`
+4. Enter your GitHub Personal Access Token, click `SAVE` then `CLOSE`. To get help creating your Personal Access Token, see the help on the right side of the screen.
 
-5. Run the Pipeline
+5. Run the Pipeline by clicking the Play button.
 
 6. Once the pipeline has finished running go to the datasets page, and expand out any charts or tables you want to see!
 
