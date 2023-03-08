@@ -26,22 +26,35 @@ Using Matatika you can run this example with only docker and we create all the f
 
 ### Steps
 
-1. Clone and start up the project:
+1. [Install Meltano](https://docs.meltano.com/getting-started/installation)
+
+2. Clone and run a job:
    ```terminal
    git clone git@github.com:Matatika/github-analytics.git
    cd github-analytics
-   docker-compose up
+   meltano run tap-gitlab target-postgres
+   ```
+   
+   You will need to configure a .env or your system environment with your GitHub token, and Postgres credentials.
+   
+   Slightly painful, right!?  Before you give up, carry on and let the Matatika Lab do all that for you.
+
+3. Clone and start up the project:
+   ```terminal
+   git clone git@github.com:Matatika/github-analytics.git
+   cd github-analytics
+   meltano invoke matatika lab
    ```
 
-2. Open [https://localhost:3443](https://localhost:3443)
+4. Your web browser automatically opens [https://localhost:3443](https://localhost:3443)
 
-3. You will now see the tasks screen. Click `LET'S GO` for the "Complete pipeline configuration" task
+5. You will now see the tasks screen. Click `LET'S GO` for the "Complete pipeline configuration" task
 
-4. Enter your GitHub Personal Access Token, click `SAVE` then `CLOSE`. To get help creating your Personal Access Token, see the help on the right side of the screen.
+6. Enter your GitHub Personal Access Token, click `SAVE` then `CLOSE`. To get help creating your Personal Access Token, see the help on the right side of the screen.
 
-5. Run the Pipeline by clicking the Play button.
+7. Run the Pipeline by clicking the Play button.
 
-6. Once the pipeline has finished running go to the datasets page, and expand out any charts or tables you want to see!
+8. Once the pipeline has finished running go to the datasets page, and expand out any charts or tables you want to see!
 
 ---
 
