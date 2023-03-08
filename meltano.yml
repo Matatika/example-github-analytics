@@ -32,3 +32,22 @@ plugins:
   - name: analyze-github
     variant: matatika
     pip_url: git+https://github.com/Matatika/analyze-github
+  utilities:
+  - name: matatika
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/matatika-ext.git@v0.1.0
+jobs:
+- name: github-job
+  tasks:
+  - tap-github
+  - target-postgres
+  - dbt:deps
+  - dbt:snapshot
+  - dbt:run
+schedules:
+- name: GitHub
+  interval: 0 0 * * * *
+  job: github-job
+  annotations:
+    matatika:
+      infer_default_datastore: true

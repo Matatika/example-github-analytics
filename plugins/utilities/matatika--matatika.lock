@@ -1,0 +1,26 @@
+{
+  "plugin_type": "utilities",
+  "name": "matatika",
+  "namespace": "matatika",
+  "variant": "matatika",
+  "label": "Matatika",
+  "docs": "https://hub.meltano.com/utilities/matatika--matatika",
+  "repo": "https://github.com/Matatika/matatika-ce",
+  "pip_url": "git+https://github.com/Matatika/matatika-ext.git@v0.1.0",
+  "executable": "matatika_extension",
+  "description": "Private Data Collaboration Platform",
+  "logo_url": "https://hub.meltano.com/assets/logos/utilities/matatika.png",
+  "commands": {
+    "describe": {
+      "args": "describe",
+      "description": "Describe the Matatika extension.",
+      "executable": "matatika_extension"
+    },
+    "lab": {
+      "args": "lab --no-browser",
+      "description": "Start the Matatika Lab.",
+      "executable": "matatika_extension"
+    }
+  },
+  "ext_repo": "https://github.com/Matatika/matatika-ext"
+}
