@@ -39,7 +39,11 @@ plugins:
 jobs:
 - name: github-job
   tasks:
-  - tap-github target-postgres dbt:deps dbt:snapshot dbt:run
+  - tap-github
+  - target-postgres
+  - dbt:deps
+  - dbt:snapshot
+  - dbt:run
 schedules:
 - name: GitHub
   interval: 0 0 * * * *
