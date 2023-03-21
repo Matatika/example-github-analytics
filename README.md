@@ -32,6 +32,7 @@ Using Matatika you can run this example with only docker and we create all the f
    ```terminal
    git clone git@github.com:Matatika/github-analytics.git
    cd github-analytics
+   meltano install
    meltano run tap-github target-postgres
    ```
    
@@ -43,6 +44,7 @@ Using Matatika you can run this example with only docker and we create all the f
    ```terminal
    git clone git@github.com:Matatika/github-analytics.git
    cd github-analytics
+   meltano install
    meltano invoke matatika lab
    ```
 
