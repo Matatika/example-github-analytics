@@ -20,6 +20,9 @@ plugins:
   - name: target-postgres
     variant: transferwise
     pip_url: git+https://github.com/Matatika/pipelinewise-target-postgres@v0.1.0
+    annotations:
+      matatika:
+        properties_from_datastore: true
   transforms:
   - name: dbt-tap-github
     variant: matatika
@@ -35,7 +38,7 @@ plugins:
   utilities:
   - name: matatika
     variant: matatika
-    pip_url: git+https://github.com/Matatika/matatika-ext.git@v0.1.0
+    pip_url: git+https://github.com/Matatika/matatika-ext.git@v0.2.0
 jobs:
 - name: github-job
   tasks:
@@ -48,6 +51,3 @@ schedules:
 - name: GitHub
   interval: 0 0 * * * *
   job: github-job
-  annotations:
-    matatika:
-      infer_default_datastore: true
