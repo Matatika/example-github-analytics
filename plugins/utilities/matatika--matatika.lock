@@ -6,7 +6,7 @@
   "label": "Matatika",
   "docs": "https://hub.meltano.com/utilities/matatika--matatika",
   "repo": "https://github.com/Matatika/matatika-ce",
-  "pip_url": "git+https://github.com/Matatika/matatika-ext.git@v0.2.0",
+  "pip_url": "git+https://github.com/Matatika/matatika-ext.git@v0.3.0",
   "executable": "matatika_extension",
   "description": "A simple UI and scheduler for Meltano projects",
   "logo_url": "https://hub.meltano.com/assets/logos/utilities/matatika.png",
