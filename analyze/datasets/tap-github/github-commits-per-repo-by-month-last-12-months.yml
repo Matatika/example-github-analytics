@@ -38,7 +38,7 @@ visualisation: |-
             "stacked": true,
             "title": {
                   "display": true,
-                  "text": "Spend"
+                  "text": "Commits"
             }
           }
         }
