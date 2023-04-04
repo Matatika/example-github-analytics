@@ -2,6 +2,10 @@
 
 This example Meltano project with the Matatika lab is a quick and easy way to get started with insights into your Github data.
 
+We have created a video showing what you get from the project, as well as how to set it up:
+
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/p67VBQaJAX0/1.jpg)](https://www.youtube.com/watch?v=p67VBQaJAX0 "Matatika GitHub Analytics Project")
+
 ---
 
 ## Prerequisites
@@ -61,6 +65,8 @@ Using Matatika you can run this example with only docker and we create all the f
 ---
 
 ### Support
+
+
 
 Join our community on the [Matatika Slack](https://join.slack.com/t/matatika/shared_invite/zt-19n1bfokx-F31DNitTpSxWCFO2aFlgxg) to get help and updates.
 
