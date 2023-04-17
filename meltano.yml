@@ -26,7 +26,7 @@ plugins:
   transforms:
   - name: dbt-tap-github
     variant: matatika
-    pip_url: https://github.com/Matatika/dbt-tap-github
+    pip_url: https://github.com/Matatika/dbt-tap-github@v0.2.0
   transformers:
   - name: dbt
     variant: dbt-labs
