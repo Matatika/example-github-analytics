@@ -1,0 +1,18 @@
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  tag: latest
+
+steps:
+- bash: docker login $(ACR_SERVER_NAME) -u $(ACR_USERNAME) -p $(ACR_PASSWORD)
+  displayName: Login to ACR
+
+- bash: docker build -t $(ACR_SERVER_NAME)/matatika/example-github-analytics:${{ variables.tag }} .
+  displayName: Build image
+
+- bash: docker push $(ACR_SERVER_NAME)/matatika/example-github-analytics:${{ variables.tag }}
+  displayName: Push image to ACR
