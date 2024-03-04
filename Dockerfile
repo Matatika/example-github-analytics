@@ -5,7 +5,6 @@ WORKDIR /workspace
 
 COPY . .
 
-ENV MELTANO_SYS_DIR_ROOT=/workspace/.meltano
 RUN meltano install
 
 # cleanup pip temporary files to reduce image size
