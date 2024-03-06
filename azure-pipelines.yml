@@ -1,5 +1,6 @@
 trigger:
 - master
+- pipelines-image
 
 schedules:
 - cron: 0 21 * * 0
@@ -12,7 +13,10 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  tag: latest
+  ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
+    tag: latest
+  ${{ if eq(variables['Build.SourceBranchName'], 'pipelines-image') }}:
+    tag: latest-dev
 
 steps:
 - bash: docker login $(ACR_SERVER_NAME) -u $(ACR_USERNAME) -p $(ACR_PASSWORD)
