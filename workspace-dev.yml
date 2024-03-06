@@ -1,0 +1,2 @@
+version: workspaces/v0.1
+pipelines_image: matatika/example-github-analytics:latest-dev
