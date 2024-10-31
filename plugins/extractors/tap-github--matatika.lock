@@ -25,7 +25,8 @@
   "settings": [
     {
       "name": "auth_token",
-      "kind": "password",
+      "kind": "string",
+      "sensitive": true,
       "label": "Personal Access Token",
       "description": "GitHub token to authenticate with.",
       "required": "true"

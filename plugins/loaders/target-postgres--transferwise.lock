@@ -22,7 +22,8 @@
     },
     {
       "name": "password",
-      "kind": "password",
+      "kind": "string",
+      "sensitive": true,
       "label": "Password",
       "description": "PostgreSQL password",
       "protected": false,
@@ -70,7 +71,8 @@
     },
     {
       "name": "ssl",
-      "kind": "hidden",
+      "kind": "string",
+      "hidden": true,
       "value": false,
       "label": "SSL",
       "protected": false,
@@ -86,7 +88,8 @@
     },
     {
       "name": "underscore_camel_case_fields",
-      "kind": "hidden",
+      "kind": "string",
+      "hidden": true,
       "value": true,
       "label": "Underscore Camel Case Fields",
       "description": "Enable underscoring camel case field names, make the resulting postgres column names the same as from the Meltano variant of target-postgres.",
@@ -94,7 +97,8 @@
     },
     {
       "name": "flush_all_streams",
-      "kind": "hidden",
+      "kind": "string",
+      "hidden": true,
       "value": false,
       "label": "Flush All Streams",
       "description": "Flush and load every stream into Postgres when one batch is full. Warning: This may trigger the COPY command to use files with low number of records.",
@@ -102,7 +106,8 @@
     },
     {
       "name": "parallelism",
-      "kind": "hidden",
+      "kind": "string",
+      "hidden": true,
       "value": 0,
       "label": "Parallelism",
       "description": "The number of threads used to flush tables. 0 will create a thread for each stream, up to parallelism_max. -1 will create a thread for each CPU core. Any other positive number will create that number of threads, up to parallelism_max.",
@@ -110,7 +115,8 @@
     },
     {
       "name": "parallelism_max",
-      "kind": "hidden",
+      "kind": "string",
+      "hidden": true,
       "value": 16,
       "label": "Max Parallelism",
       "description": "Max number of parallel threads to use when flushing tables.",
@@ -118,21 +124,24 @@
     },
     {
       "name": "default_target_schema_select_permission",
-      "kind": "hidden",
+      "kind": "string",
+      "hidden": true,
       "label": "Default Target Schema Select Permission",
       "description": "Grant USAGE privilege on newly created schemas and grant SELECT privilege on newly created tables to a specific role or a list of roles. If `schema_mapping` is not defined then every stream sent by the tap is granted accordingly.",
       "protected": false
     },
     {
       "name": "schema_mapping",
-      "kind": "hidden",
+      "kind": "string",
+      "hidden": true,
       "label": "Schema Mapping",
       "description": "Useful if you want to load multiple streams from one tap to multiple Postgres schemas.\n\nIf the tap sends the `stream_id` in `<schema_name>-<table_name>` format then this option overwrites the `default_target_schema` value.\nNote, that using `schema_mapping` you can overwrite the `default_target_schema_select_permission` value to grant SELECT permissions to different groups per schemas or optionally you can create indices automatically for the replicated tables.\n",
       "protected": false
     },
     {
       "name": "add_metadata_columns",
-      "kind": "hidden",
+      "kind": "string",
+      "hidden": true,
       "value": true,
       "label": "Add Metadata Columns",
       "description": "Metadata columns add extra row level information about data ingestions, (i.e. when was the row read in source, when was inserted or deleted in postgres etc.) Metadata columns are creating automatically by adding extra columns to the tables with a column prefix `_SDC_`. The column names are following the stitch naming conventions documented at https://www.stitchdata.com/docs/data-structure/integration-schemas#sdc-columns. Enabling metadata columns will flag the deleted rows by setting the `_SDC_DELETED_AT` metadata column. Without the `add_metadata_columns` option the deleted rows from singer taps will not be recongisable in Postgres.",
@@ -140,7 +149,8 @@
     },
     {
       "name": "hard_delete",
-      "kind": "hidden",
+      "kind": "string",
+      "hidden": true,
       "value": false,
       "label": "Hard Delete",
       "description": "When `hard_delete` option is true then DELETE SQL commands will be performed in Postgres to delete rows in tables. It's achieved by continuously checking the `_SDC_DELETED_AT` metadata column sent by the singer tap. Due to deleting rows requires metadata columns, `hard_delete` option automatically enables the `add_metadata_columns` option as well.",
@@ -148,7 +158,8 @@
     },
     {
       "name": "data_flattening_max_level",
-      "kind": "hidden",
+      "kind": "string",
+      "hidden": true,
       "value": 10,
       "label": "Data Flattening Max Level",
       "description": "Object type RECORD items from taps can be transformed to flattened columns by creating columns automatically. When value is 0 (default) then flattening functionality is turned off.",
@@ -172,7 +183,8 @@
     },
     {
       "name": "temp_dir",
-      "kind": "hidden",
+      "kind": "string",
+      "hidden": true,
       "label": "Temporary Directory",
       "description": "(Default: platform-dependent) Directory of temporary CSV files with RECORD messages.",
       "protected": false
