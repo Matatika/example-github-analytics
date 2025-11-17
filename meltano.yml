@@ -9,7 +9,7 @@ plugins:
   extractors:
   - name: tap-github
     variant: matatika
-    pip_url: git+https://github.com/MeltanoLabs/tap-github.git
+    pip_url: git+https://github.com/MeltanoLabs/tap-github.git@v1.20.0
     select:
     - '*!.*'
     - issues.*
