@@ -22,17 +22,8 @@ steps:
 - bash: docker login $(ACR_SERVER_NAME) -u $(ACR_USERNAME) -p $(ACR_PASSWORD)
   displayName: Login to ACR
 
-- bash: docker build --push -t $(ACR_SERVER_NAME)/matatika/example-github-analytics .
-  displayName: Build and push image to ACR
+- bash: docker build -t $(ACR_SERVER_NAME)/matatika/example-github-analytics:${{ variables.tag }} .
+  displayName: Build image
 
-- task: ECRPushImage@1
-  displayName: Push image to ECR
-  inputs:
-    awsCredentials: Matatika AWS (Staging)
-    regionName: eu-west-2
-    imageSource: imagename
-    sourceImageName: $(ACR_SERVER_NAME)/matatika/example-github-analytics
-    sourceImageTag: ${{ variables.tag }}
-    repositoryName: example-github-analytics
-    pushTag: ${{ variables.tag }}
-    autoCreateRepository: true
+- bash: docker push $(ACR_SERVER_NAME)/matatika/example-github-analytics:${{ variables.tag }}
+  displayName: Push image to ACR
