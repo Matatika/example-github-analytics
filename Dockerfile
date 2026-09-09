@@ -1,4 +1,4 @@
-FROM matatika.azurecr.io/matatika/matatika-catalog-shelltask:latest-dev
+FROM matatika.azurecr.io/meltano-shelltask:latest-dev
 
 RUN mkdir workspace
 WORKDIR /workspace
